@@ -1,0 +1,530 @@
+{% load static %}<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compitable" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial scale=1.0">
+        <meta name="description" content="Welcome to PremiumFoods, your destination for the finest selection of gourmet and premium quality foods. We specialize in sourcing and delivering the most exquisite and delectable culinary delights, from artisanal cheeses and organic meats to rare truffles and luxury chocolates. Our mission is to elevate your dining experience by offering a curated collection of premium ingredients and products. Explore our website to discover a world of culinary excellence and elevate your meals to a new level of taste and sophistication. Indulge in the world of flavors with PremiumFoods today.">
+        <meta name="keywords" content="premiumfoods best product mango all foods">
+        <meta name="author" content="Kawser Rahman">
+
+        <title>Premium Foods - Home</title>
+        <script type="text/javascript" src="{% static 'menu3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'menu2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'sale.js' %}"></script>
+        <script type="text/javascript" src="{% static 'sales_delete.js' %}"></script>
+        <script type="text/javascript" src="{% static 'profile.js' %}"></script>
+        <script type="text/javascript" src="{% static 'search_by_date.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <style>
+            *{
+                margin: 0;
+            }
+            .upper-menu{
+                position: fixed;
+                height: 70px;
+                width: 100%;
+                background-color: #F85606;
+                z-index: 200;
+            }
+            .menu{
+                color: white;
+                float: right;
+                width: 80px;
+                font-size: 25px;
+                margin: 20px;
+            }
+            a:hover{
+                color: #cccc;
+            }
+            .search{
+                float: left;
+            }
+            .search-style{
+                margin: 20px;
+                width: 290px;
+                height: 30px;
+            }
+            .btn-style{
+                margin: 23px;
+                margin-left: -60px;
+                width: 30px;
+                height: 30px;
+                border: none;
+                background-color: white;
+            }
+            #search-image{
+                height: 25px;
+                width: 25px;
+            }
+            .search-body{
+                width: 320px;
+                display: flex;
+            }
+            .logo{
+                margin: 5px;
+                float: left;
+            }
+            #image-container {
+                width: 1200px;
+                height: 500px;
+                margin: 0 auto;
+                overflow: hidden;
+                position: relative;
+                top: 90px;
+                z-index: 1;
+            }
+    
+            #image-slider {
+                display: flex;
+                transition: transform 0.5s;
+                 
+            }
+    
+            .slider-image {
+                width: 1200px;
+                height: 500px;
+            }
+    
+            #prev-button, #next-button {
+                margin: 10px;
+                cursor: pointer;
+            }
+    
+            #dot-container {
+                text-align: center;
+            }
+
+            .dot {
+                display: inline-block;
+                width: 5px;
+                height: 5px;
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 50%;
+                margin: 0 5px;
+                cursor: pointer;
+                z-index: 222;
+                margin-top: 60px;
+            }
+    
+            .active-dot {
+                background-color: black;
+            }
+            #prev-button{
+                background-color: #cccc; 
+                position: absolute;
+                margin-left: 0px;
+                margin-top: 210px;
+                height: 50px;
+                width: 25px;
+                z-index: 4;
+                font-size: 25px;
+                padding: 2px;
+                border: 1px solid #cccc;
+                border-radius: 5px;
+            }
+            #next-button{
+                background-color: #cccc; 
+                position: absolute;
+                margin-left: 1175px;
+                margin-top: 210px;
+                height: 50px;
+                width: 25px;
+                z-index: 4;
+                font-size: 25px;
+                padding: 2px;
+                border: 1px solid #cccc;
+                border-radius: 5px;
+            }
+       
+            .container{
+                width: 1065px;
+                margin: 0 auto;
+                margin-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+              
+            }
+
+            
+  
+            /* Define the keyframe animation */
+            @keyframes slideIn {
+              from {
+                transform: translateY(100%); /* Start from below the viewport */
+                opacity: 0; /* Start invisible */
+              }
+              to {
+                transform: translateY(0); /* Move to its normal position */
+                opacity: 1; /* Fade in */
+              }
+            }
+            
+            .card {
+              width: 190px;
+              height: 340px;
+              margin: 5px;
+              transition: transform 0.3s, box-shadow 0.3s;
+              animation: slideIn 1s ease forwards; /* Apply the animation */
+              animation-delay: 0.3s; /* Delay the animation */
+              transform: translateY(100%); /* Start below the viewport */
+              opacity: 0; /* Start invisible */
+              background-color: white;
+              box-shadow: 1px 1px 1px #cccc;
+            }
+            
+            .card:hover{
+                box-shadow: 1px 1px #cccc;
+
+            }
+            
+            .head{
+                width: 190px;
+                overflow: hidden; 
+                position: relative; 
+              }
+              
+              .head img {
+                width: 100%; 
+                height: 190px;
+                transition: transform 0.3s; 
+                padding: 2px;
+                cursor: pointer;
+              }
+              
+              .head:hover img {
+                transform: scale(1.2); 
+              }
+              
+          
+              body{
+                background-color: #F5F5F5;
+              }
+              
+              *{
+                font-family: arial;
+              }
+              .bottom{
+                font-size: 15px;
+                padding: 3px;
+              }
+              .price-font{
+                font-size: 19px;
+                color: #FE9F43;
+              }
+
+ 
+              .products{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+              }
+              .mobile-banner{
+                display: none;
+              }
+
+            .slider-image{
+                width: 1200px;
+            }
+            .footer{
+                width: 100%;
+                height: 200px;
+                margin-top: 20px;
+                background-color: #045F1F;
+                text-align: center;
+                color: yellow;
+                 
+            }
+            
+            .footer-sub{
+                width: 350px;
+                float: left;
+                margin: 30px;
+                line-height: 1.6;
+            }
+            .footer-sub a{
+                color: yellow;
+                text-decoration: none;
+            }
+            .footer-sub a:hover{
+                color: white;
+            }
+            a{
+                text-decoration: none;
+                color: black;
+            }
+            .rect-logo{
+                width: 200px;
+                height: 60px;
+                margin-left: -10px;
+            }
+            .circ-logo{
+                width: 60px;
+                height: 60px;
+            }
+            @media screen and (min-width: 100px) and (max-width: 799px){
+                .logo{
+                    width: 260px;
+                    height: 40px;
+                    margin: 0px;
+                   
+                }
+                .upper-menu{
+                    height: 43px;
+                }
+                .rect-logo{
+                    width: 140px;
+                    height: 40px;
+                    margin-left: -10px;
+                }
+                .circ-logo{
+                    width: 40px;
+                    height: 40px;
+                }
+                #image-container{
+                    top: 50px;
+                }
+              
+                .search-body{
+                    width: 140px;
+                    position: absolute;
+                    right: 14px;
+                    margin: 0px;
+                }
+                .search-style{
+                    width: 140px;
+                    margin: 3px;
+                }
+                .btn-style{
+                    margin-left: -38px;
+                    margin-top: 7px;
+                }
+                #image-container{
+                    width: 98%;
+                    height: 250px;
+                }
+                .slider-image{
+                    width: 100%;
+                    height: 250px;
+                }
+                .desktop-banner{
+                    display: none;
+                }
+                .mobile-banner{
+                    display: block;
+                }
+                .container{
+                    width: 100%;
+                    
+                    
+                }
+ 
+                #prev-button{
+                    display: none;
+                }
+                #next-button{
+                    display: none;
+                }
+                .footer{
+                    width: 100%;
+                    height: 550px;
+                }
+                .footer-sub{
+                    width: 85%;
+                   
+                }
+            }
+            .hide-menu{
+                height: 40px;
+                width: 40px;
+                float: left;
+                margin-top: 13px;
+
+            }
+            .buy-button{
+                width: 100%;
+                height: 40px;
+                margin-top: 3px;
+                border: none;
+                background-color: #FE9F43;
+                position: relative;
+                top: 10px;
+                font-family: arial;
+                font-size: 15px;
+            }
+            .discount{
+                height: 15px;
+                width: 40px;
+                position: relative;
+                top: -320px;
+                right: 0px;
+                z-index: 11111;
+                background-color: green;
+                color: white;
+                text-align: center;
+                padding: 2px;
+            }
+
+              
+        </style>
+    </head>
+    <body>
+        <div class="upper-menu">
+           
+            <div class="logo">
+                <a href="{% url 'user_home' %}">
+                <img  class="circ-logo" src="{% static 'premium-circle.png' %}">
+                <img  class="rect-logo" src="{% static 'premium-rect.png' %}">
+                </a>
+            </div>
+            <div class="search">
+                <form >
+                    <div class="search-body">
+                    <div><input type="text" class="search-style"></input></div>
+                    <div><button type="submit" class="btn-style"> <img id="search-image" src="{% static 'search.png' %}"></button></div></div>
+                </form>
+            </div> 
+        </div>
+       
+    
+        <div id="image-container">
+            <button id="prev-button"><</button>
+            <button id="next-button">></button>
+            <div id="image-slider">
+                
+                {% for banner in desktop_banners %}
+                <img  class="slider-image" src="data:image/png;base64,{{ banner.img }}" alt="Resized Image">
+                {% endfor %}
+                
+            </div>
+           
+        </div>
+      
+       
+
+        <div id="dot-container"></div>
+        <script>
+            const imageSlider = document.getElementById('image-slider');
+            const images = document.querySelectorAll('.slider-image');
+            const dotsContainer = document.getElementById('dot-container');
+            var element = document.getElementById("image-container");
+
+            // Get the current width of the element
+            var currentWidth = element.offsetWidth;
+    
+            let currentIndex = 0;
+    
+            // Create dots for each image
+            images.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dotsContainer.appendChild(dot);
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlider();
+                });
+            });
+    
+            const dots = document.querySelectorAll('.dot');
+    
+            // Initialize the first dot as active
+            dots[currentIndex].classList.add('active-dot');
+             if (currentWidth < 500){
+                currentWidth=currentWidth-1;
+             }
+             if (currentWidth > 800){
+                currentWidth=currentWidth+30;
+             }
+ 
+             
+            function updateSlider() {
+                const translateValue = -currentIndex * currentWidth ; // 1200px is the width of each image
+                imageSlider.style.transform = `translateX(${translateValue}px)`;
+    
+                // Update active dot
+                dots.forEach(dot => dot.classList.remove('active-dot'));
+                dots[currentIndex].classList.add('active-dot');
+            }
+    
+            function nextImage() {
+                if (currentIndex < images.length - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateSlider();
+            }
+    
+            // Automatically change images every 2 seconds
+            setInterval(nextImage, 5000);
+    
+            document.getElementById('prev-button').addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+    
+            document.getElementById('next-button').addEventListener('click', () => {
+                nextImage();
+            });
+        </script>
+
+      
+        <div class="container">
+            
+            {% for product in products %}
+            <div class="card">
+                <div class="head">
+       
+                    <img  src="data:image/png;base64,{{ product.image }}" alt="Resized Image">
+                </div>
+              
+                <div class="bottom">
+                    <p>{{ product.pname }}</p><br>
+                <p class="price-font"> &#2547; {{ product.dis_price }}</p>
+                <p><span> <strike>&#2547; {{ product.price }}</strike></span></p>
+                <div>
+                    
+                        <input type="hidden" name="pcode" value={{product.pcode}}>
+                        <a href="{% url 'products' %}?pcode={{product.pcode}}">
+                            <button class="buy-button" type="submit">Buy Now</button>
+                        </a> 
+
+                       
+       
+                </div>
+                <div class="discount">-{{product.discount}}%</div>
+            </div>
+           
+
+            </div>
+            {% endfor %}  
+  
+        </div>
+        <div class="footer">
+         
+            <div class="footer-sub">
+             <img class="circ-logo" src="{% static 'premium-circle.png' %}">
+             <p style="font-family: arial; font-size: 13px; color: yellow;">Premium Foods is one of the largest among the Agro 
+                 Food Manufacturer and Supplier according to the Customers Demand</p>
+            </div>
+            <div class="footer-sub">
+             <h3>CONTACT INFO:</h3>
+             <p style="font-family: arial; font-size: 15px;">Baneshwar bazar (Infront of Pubali Bank)
+                  Puthia, Rajshahi</p>
+            </div>
+            <div class="footer-sub">
+             <h3>MORE INFO:</h3>
+             <a href="{% url 'about_company' %}" target="blank">About Company</a><br>
+             <a href="{% url 'terms_condition' %}" target="blank">Terms and Conditions</a><br>
+             <a href="{% url 'contact_us' %}" target="blank">Contact Us</a>
+            </div>
+
+
+    </div>
+     
+
+      
+    </body>    
