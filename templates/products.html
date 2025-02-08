@@ -1,0 +1,839 @@
+{% load static %}<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compitable" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial scale=1.0">
+        <meta name="description" content="Welcome to PremiumFoods, your destination for the finest selection of gourmet and premium quality foods. We specialize in sourcing and delivering the most exquisite and delectable culinary delights, from artisanal cheeses and organic meats to rare truffles and luxury chocolates. Our mission is to elevate your dining experience by offering a curated collection of premium ingredients and products. Explore our website to discover a world of culinary excellence and elevate your meals to a new level of taste and sophistication. Indulge in the world of flavors with PremiumFoods today.">
+        <meta name="keywords" content="premiumfoods best product mango all foods">
+        <meta name="author" content="Kawser Rahman">
+
+        <title>Premium Foods - Products</title>
+        <script type="text/javascript" src="{% static 'menu3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'menu2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'sale.js' %}"></script>
+        <script type="text/javascript" src="{% static 'sales_delete.js' %}"></script>
+        <script type="text/javascript" src="{% static 'profile.js' %}"></script>
+        <script type="text/javascript" src="{% static 'search_by_date.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <style>
+            *{
+                margin: 0;
+            }
+            .upper-menu{
+                position: fixed;
+                height: 70px;
+                width: 100%;
+                background-color: #F85606;
+                z-index: 200;
+                margin-top: 0px;
+
+            }
+            .menu{
+                color: white;
+                float: right;
+                width: 80px;
+                font-size: 25px;
+                margin: 20px;
+              
+            }
+            a:hover{
+                color: #cccc;
+            }
+            .search{
+                float: left;
+            }
+            .search-style{
+                margin: 20px;
+                width: 290px;
+                height: 30px;
+            }
+            .btn-style{
+                margin: 23px;
+                margin-left: -60px;
+                width: 30px;
+                height: 30px;
+                border: none;
+                background-color: white;
+            }
+            #search-image{
+                height: 42px;
+                width: 42px;
+            }
+            .search-body{
+                width: 320px;
+                display: flex;
+            }
+            .logo{
+                margin: 5px;
+                float: left;
+            }
+            .container{
+                width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                flex-wrap: wrap;
+                position: relative;
+                top: 100px;
+              
+            }
+
+            #image-container {
+                width: 300px;
+                height: 300px;
+                overflow: hidden;
+                position: relative;
+                z-index: 1;
+                border: 2px solid #cccc;
+            
+            }
+            .details{
+                width: 500px;
+                margin-left: 20px;
+                
+            }
+            .product-details{
+                width: 1200px;
+            }
+            #image-slider {
+                display: flex;
+                transition: transform 0.5s;
+                   
+            }
+    
+            .slider-image {
+                width: 300px;
+                height: 270px;
+            }
+   
+            #prev-button, #next-button {
+                margin: 10px;
+                cursor: pointer;
+            }
+    
+            #dot-container {
+                text-align: center;
+               
+            }
+
+          
+    
+            .dot {
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 50%;
+                margin: 0 5px;
+                cursor: pointer;
+                z-index: 222;
+                margin-top: 10px;
+            }
+    
+            .active-dot {
+                background-color: black;
+            }
+            #prev-button{
+                background-color: #cccc; 
+                position: absolute;
+                margin-left: 0px;
+                margin-top: 125px;
+                height: 50px;
+                width: 25px;
+                z-index: 4;
+                font-size: 25px;
+                padding: 2px;
+                border: 1px solid #cccc;
+                border-radius: 5px;
+               
+            }
+            #next-button{
+                background-color: #cccc; 
+                position: absolute;
+                margin-left: 275px;
+                margin-top: 125px;
+                height: 50px;
+                width: 25px;
+                z-index: 4;
+                font-size: 25px;
+                padding: 2px;
+                border: 1px solid #cccc;
+                border-radius: 5px;
+                
+              }
+       
+
+            
+  
+            /* Define the keyframe animation */
+            @keyframes slideIn {
+              from {
+                transform: translateY(100%); /* Start from below the viewport */
+                opacity: 0; /* Start invisible */
+              }
+              to {
+                transform: translateY(0); /* Move to its normal position */
+                opacity: 1; /* Fade in */
+              }
+            }
+            
+            .card {
+              width: 202px;
+              height: 350px;
+              margin: 5px;
+              transition: transform 0.3s, box-shadow 0.3s;
+              animation: slideIn 1s ease forwards; /* Apply the animation */
+              animation-delay: 0.3s; /* Delay the animation */
+              transform: translateY(100%); /* Start below the viewport */
+              opacity: 0; /* Start invisible */
+              background-color: white;
+              box-shadow: 1px 1px 1px #cccc;
+            }
+            
+            .card:hover{
+                box-shadow: 1px 1px #cccc;
+
+            }
+            
+            .head{
+                width: 200px;
+                overflow: hidden; 
+                position: relative; 
+              }
+              
+              .head img {
+                width: 100%; 
+                transition: transform 0.3s; 
+                padding: 2px;
+                cursor: pointer;
+              }
+              
+              .head:hover img {
+                transform: scale(1.2); 
+              }
+              
+          
+              body{
+                background-color: #F5F5F5;
+              }
+              
+              *{
+                font-family: arial;
+              }
+              .bottom{
+                font-size: 15px;
+                padding: 3px;
+              }
+              .price-font{
+                font-size: 19px;
+                color: #FE9F43;
+              }
+
+              .best-selling{
+                width: 96%;
+                margin: 2%;
+              }
+              .products{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+              }
+
+            #left-button, #right-button {
+                cursor: pointer;
+            }
+            .slider-image{
+                width: 1200px;
+            }
+            .motto{
+                width: 1200px;
+                display: flex:
+                flex-wrap: wrap;
+                
+            }
+            .description{
+                width: 350px;
+                border: 3px solid black;
+                border-radius: 10px;
+                float: left;
+                margin: 20px;
+                height: 550px;
+            }
+            .description-down{
+                width: 350px;
+                border: 3px solid black;
+                border-radius: 10px;
+                float: left;
+                margin: 20px;
+                height: 300px;
+            }
+            .image-style{
+                margin-top: 5px;
+                margin-left: 130px; 
+                width: 64px; 
+                height: 64px;
+                border: 10px solid #328F3A;
+                border-radius: 50%;
+                background-color: #328F3A;
+            }
+            .image-style-head{
+                margin-top: 5px;
+                margin-left: 120px; 
+                width: 64px; 
+                height: 64px;
+                border: 30px solid #328F3A;
+                border-radius: 50%;
+                background-color: #328F3A;
+            }
+            .footer{
+                width: 100%;
+                height: 200px;
+                margin-top: 120px;
+                background-color: #045F1F;
+                text-align: center;
+                color: yellow;
+                 
+            }
+            
+            .footer-sub{
+                width: 350px;
+                float: left;
+                margin: 30px;
+                line-height: 1.6;
+            }
+            .footer-sub a{
+                color: yellow;
+                text-decoration: none;
+            }
+            .footer-sub a:hover{
+                color: white;
+            }
+            .home-button{
+                
+                position: absolute;
+                right: 20px;
+                top: 18px;
+            }
+            .button-style-bottom{
+
+                padding: 10px 20px;
+                text-decoration: none;
+                font-size: 18px;
+                position: relative;
+                border: none;
+                margin-left: 1px;
+                overflow: hidden;
+                display: inline-block;
+
+            }
+            .buy-button-pc{
+                border: none; 
+                width: 220px; 
+                height: 45px; 
+                font-size: 17px; 
+                text-align: center;
+                float: left;
+                
+            }
+
+            .buy-now-pc-button{
+                border: none;
+                background-color: #F5F5F5;
+                height: 45px;
+                width: 220px;
+
+            }
+            .whatsapp-pc{
+                width: 170px;
+                float: right;
+            }
+            .whatsapp-button-pc{
+                width: 170px;
+                height: 46px;
+                
+            }
+
+            .buy-button-mobile{
+                display: none; 
+            }
+
+            .buy-now-mobile-button{
+                display: none;
+            }
+            .whatsapp-mobile{
+               display: none;
+            }
+            .whatsapp-button-mobile{
+               display: none;  
+            }
+
+            .call{
+                height: 40px;
+                width: 40px;
+                background-color: white;
+                padding: 3px;
+                text-align: center;
+                float: left;
+            }
+            .call-button{
+            
+                border: none;
+            }
+            .message{
+                height: 40px;
+                width: 40px;
+                background-color: white;
+                padding: 3px;
+                text-align: center;
+                float: left;
+            }
+            .call-number{
+                width: 200px;
+                height: 40px;
+                font-size: 15px;
+                padding: 10px;
+                background-color: white;
+                border: 1px solid #cccc;
+                box-sizing: border-box;
+                text-align: center;
+                margin: -50px;
+                margin-left: 0px;
+                position: absolute;
+                display: none;
+                
+            }
+
+  
+            @media screen and (min-width: 100px) and (max-width: 799px){
+                .upper-menu{
+                    width: 100%;
+                }
+                .logo{
+                    width: 260px;
+                   
+                }
+
+                #image-container{
+                    width: 300px;
+                    height: 300px;
+                    margin: 0 auto;
+                    margin-bottom: 20px;
+                }
+                .slider-image{
+                    width: 300px;
+                    height: 300px;
+                }
+                .container{
+                    width: 92%;
+                      
+                }
+                .details{
+                    width: 96%;
+                    margin-top: 20px;
+                    margin: 0 auto;
+
+                }
+                .bottom-menu{
+                    position: fixed;
+                    bottom: 0px;
+                    width: 100%;
+                    height: 45px;
+                    background-color: white;
+                    left: 0px;
+                }
+                .product-details{
+                    width: 98%;
+                }
+                .motto{
+                    width: 100%;
+                    margin: 0 auto;
+                }
+                .description{
+                    width: 94%;
+                    height: 500px;
+                    margin: 3%;
+                   
+                }
+                .description-down{
+                    width: 94%;
+                    height: 300px;
+                    margin: 3%;
+                }
+                .image-style{
+                    
+                    margin-left: 40%; 
+                }
+                .image-style-head{
+                  
+                    margin-left: 36%; 
+                  
+                }
+                .buy-button-pc{
+                    width: 100%;
+                    display: none;
+                   
+                }
+                .buy-now-pc-button{
+                    background-color: white;
+                    margin-top: 2px;
+                    width: 45%;
+                    display: none;
+                }
+                .whatsapp-pc{
+                    margin-top: 3px;
+                    width: 35%;
+                    display: none;
+                   
+                }
+
+                    
+                .buy-button-mobile{
+                    display: block;
+                    border: none; 
+                    width: 100%; 
+                    height: 45px; 
+                    font-size: 17px; 
+                    text-align: center;
+                    float: left; 
+                    
+                    margin-top: 0px;
+                    z-index: 1;
+                }
+
+                .buy-now-mobile-button{
+                    display: block;
+                    border: none;
+                    background-color: #F5F5F5;
+                    height: 45px;
+                    width: 45%;
+                    background-color: white;
+                }
+                .whatsapp-mobile{
+                    display: block;
+                    width: 40%;
+                    float: right;
+                    margin-top: -44px;
+                    background-color: white;
+                    z-index: 3;
+                    
+                }
+                .whatsapp-button-mobile{
+                    display: block;
+                    width: 100%;
+                    height: 45px;   
+                    background-color: white; 
+                    z-index: 4;
+
+                }
+  
+
+                 .footer{
+                    width: 100%;
+                    height: 550px;
+                }
+                .footer-sub{
+                    width: 85%;
+                   
+                }
+          
+           
+
+            }
+            .hide-menu{
+                height: 40px;
+                width: 40px;
+                float: left;
+                margin-top: 13px;
+
+            }
+
+            .rect-logo{
+                width: 200px;
+                height: 60px;
+                margin-left: -10px;
+            }
+            .circ-logo{
+                width: 60px;
+                height: 60px;
+            }
+            .img-size{
+                width: 40px;
+                height: 40px;
+            }
+              
+        </style>
+    </head>
+    <body>
+        <div class="upper-menu">
+            
+            <div class="logo">
+                <a href="{% url 'user_home' %}">
+                    <img  class="circ-logo" src="{% static 'premium-circle.png' %}">
+                    <img  class="rect-logo" src="{% static 'premium-rect.png' %}">
+                </a>
+            </div>
+
+            
+        </div>
+       
+    <div class="container">
+    
+        <div id="image-container">
+            <button id="prev-button"><</button>
+            <button id="next-button">></button>
+            
+            <div id="image-slider">
+                <img class="slider-image" src="data:image/png;base64,{{ image }}" alt="Resized Image">
+                {% for product in images %}
+                <img class="slider-image" src="data:image/png;base64,{{ product.image }}" alt="Resized Image">
+                {% endfor %}
+                
+            </div>
+            <div id="dot-container"></div>
+        </div>
+
+        <div class="details">
+            <h4>
+                {{pname}}
+           
+            </h4><br><hr><br>
+            <p class="price-font"> &#2547; {{discount_price}}</p>
+            <p><span style="color: black ; font-size: 15px;"> <strike>&#2547; {{price}}</strike>
+            </span><span style="font-size: 15px">&nbsp;-{{discount}}%</span></p><br><hr><br>
+            <div class="buy-now">
+                <form method="post" action={% url 'checkout' %}>
+                      <div>
+                        <p style="font-size: 20px; color: olive;">Size</p><br>
+
+                       {% for var in variant %}
+                        <input type="radio" name="option" value="{{var.price}}" id="option{{ forloop.counter }}">
+                        <label for="option{{ forloop.counter }}">{{var.size}} {{unit}}&nbsp;</label>
+                        {% endfor %}
+                        
+                        <div style="background-color: white; padding: 5px; margin-top: 10px; border: 1px solidi olive;" class="result" id="result"></div>
+
+                        <script>
+                            const radios = document.querySelectorAll('input[type="radio"]');
+                            const result = document.getElementById('result');
+
+                            radios.forEach(radio => {
+                                radio.addEventListener('change', function () {
+                                    if (radio.checked) {
+                                        result.textContent = 'Price: ৳ ' + radio.value;
+                                        result.style.display = 'block';
+                                    }
+                                });
+                            });
+                        </script>
+                      
+                    </div><br>
+            
+                    <div>
+                        <label for="numberInput"></label><span style="color: olive; font-size: 20px">Quantity</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" id="decreaseButton" style="width: 25px; text-align: center; font-size: 17px;">-</button>
+                        <input type="number" id="numberInput" name="numberInput" min="1" max="100" value="1" style=" width: 40px; text-align: center; font-size: 17px;">
+                        <button type="button" id="increaseButton" style="width: 25px; text-align: center; font-size: 17px;">+</button>
+               
+                    </div><br>
+                    
+                    <div class="call-number">
+                        01767820520
+                    </div>
+                    <div class="bottom-menu">
+                     <div class="call button-style-bottom">
+                        <a href="tel:+8801722883884"  target="blank" class="call-button"><img class="img-size" src="{% static 'call_icon2.png' %}"></button>
+                     </div>   
+                     <div class="message button-style-bottom">
+                       <a href="https://m.me/premiumfoods.com.bd" target="blank"> 
+                        <img class="img-size" src="{% static 'chat_icon2.png' %}"></a>
+                     </div> 
+            
+                        {% csrf_token %}
+                        <input type="hidden" name="pcode" value={{pcode}}>
+                        <button class="buy-now-pc-button" type="submit">
+                            <img class="buy-button-pc" src="{% static 'Button-Buy Now PC.png' %}">
+                        </button> 
+                        <div class="whatsapp-pc">
+                            <a href="https://web.facebook.com/greentechagro21/?_rdc=1&_rdr" target="blank"> <img class="whatsapp-button-pc" src="{% static 'Button-Whatsapp PC.png' %}"></a>
+                          </div>  
+
+                          <button class="buy-now-mobile-button" type="submit">
+                            <img class="buy-button-mobile" src="{% static 'Button_buy Now Mobile.png' %}">
+                        </button> 
+                        <div class="whatsapp-mobile">
+                            <a href="https://web.facebook.com/greentechagro21/?_rdc=1&_rdr" target="blank"> <img class="whatsapp-button-mobile" src="{% static 'Button_Whatsapp icon mobile.png' %}"></a>
+                          </div>    
+                    </form>  
+                    </div>
+            
+            
+                <script>
+                    const numberInput = document.getElementById('numberInput');
+                    const increaseButton = document.getElementById('increaseButton');
+                    const decreaseButton = document.getElementById('decreaseButton');
+            
+                    increaseButton.addEventListener('click', () => {
+                        numberInput.stepUp();
+                    });
+            
+                    decreaseButton.addEventListener('click', () => {
+                        numberInput.stepDown();
+                    });
+                </script>
+            </div>
+        </div>
+
+      
+       <div class="product-details">
+        <br><br><br><br><h2 style="font-family: arial; font-size: 27px; color: olive; text-align: center"><b>
+            {{heading_1}}
+        </b></h2><br>
+        <div class="motto">
+            <div class="description">
+                <img class="image-style-head" src="{% static 'hospital-facility3.png' %}" alt="Image 1">
+                <h2 style="text-align: center; padding: 15px;">{{quality_head}}</h3>
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                   {{quality}}
+                </p>
+            </div>
+            <div class="description">
+                <img class="image-style-head" src="{% static 'water-drop2.png' %}" alt="Image 1">
+                <h2 style="text-align: center; padding: 15px;">{{purity_head}}</h3>
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                  {{purity}} 
+                </p>
+            </div>
+            <div class="description">
+                <img class="image-style-head" src="{% static 'crown.png' %}" alt="Image 1">
+                <h2 style="text-align: center; padding: 15px;">{{purity_head}}
+                </h3>
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                  {{premium}}
+                </p>
+            </div><br><br>
+            <br><br><p style="width: 100%; font-size: 27px; color: olive; font-family: arial; text-align: center;">
+                <b>{{heading_2}} </b>
+            </p><br>
+            <div class="description-down">
+                <img class="image-style" src="{% static 'healthy.png' %}" alt="Image 1">
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                   {{healthy}}   
+                </p>
+            </div>
+            <div class="description-down">
+                <img class="image-style" src="{% static 'water-drop.png' %}" alt="Image 1">
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                {{purity_level}}   
+                </p>
+            </div>
+            <div class="description-down">
+                <img class="image-style" src="{% static 'expertise.png' %}" alt="Image 1">
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                {{experience}}
+                </p>
+            </div>
+            <div class="description-down">
+                <img class="image-style" src="{% static 'shield.png' %}" alt="Image 1">
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                 {{safety}}
+                </p>
+            </div>
+            <div class="description-down">
+                <img class="image-style" src="{% static 'package.png' %}" alt="Image 1">
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                {{packaging}}
+                </p>
+            </div>
+            <div class="description-down">
+                <img class="image-style" src="{% static 'original.png' %}" alt="Image 1">
+                <p style="text-align: center; font-size: 18px; padding: 10px; color: olive; line-height: 1.6;">
+                {{real_taste}}
+                </p>
+            </div>
+
+        </div>
+       </div>
+    </div>
+    <div class="footer">
+         
+        <div class="footer-sub">
+            <img  class="circ-logo" src="{% static 'premium-circle.png' %}">
+         <p style="font-family: arial; font-size: 13px; color: yellow;">Premium Foods is one of the largest among the Agro 
+             Food Manufacturer and Supplier according to the Customers Demand</p>
+        </div>
+        <div class="footer-sub">
+         <h3>CONTACT INFO:</h3>
+         <p style="font-family: arial; font-size: 15px;">Baneshwar bazar (Infront of Pubali Bank)
+              Puthia, Rajshahi</p>
+        </div>
+        <div class="footer-sub">
+         <h3>MORE INFO:</h3>
+         <a href="{% url 'about_company' %}" target="blank">About Company</a><br>
+         <a href="{% url 'terms_condition' %}" target="blank">Terms and Conditions</a><br>
+         <a href="{% url 'contact_us' %}" target="blank">Contact Us</a>
+        </div>
+
+
+</div>
+ 
+
+<script>
+    const imageSlider = document.getElementById('image-slider');
+    const images = document.querySelectorAll('.slider-image');
+    const dotsContainer = document.getElementById('dot-container');
+    var element = document.getElementById("image-container");
+
+    // Get the current width of the element
+    var currentWidth = element.offsetWidth;
+
+    let currentIndex = 0;
+
+    // Create dots for each image
+    images.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dotsContainer.appendChild(dot);
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+        });
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+
+    function updateSlider() {
+        const translateValue = -currentIndex * 300 ; // 1200px is the width of each image
+        imageSlider.style.transform = `translateX(${translateValue}px)`;
+
+        // Update active dot
+        dots.forEach(dot => dot.classList.remove('active-dot'));
+        dots[currentIndex].classList.add('active-dot');
+    }
+
+    function nextImage() {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
+        updateSlider();
+    }
+
+    // Automatically change images every 2 seconds
+    setInterval(nextImage, 5000);
+
+    document.getElementById('prev-button').addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+        }
+    });
+
+    document.getElementById('next-button').addEventListener('click', () => {
+        nextImage();
+    });
+</script>
+
+    </body>

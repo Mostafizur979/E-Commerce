@@ -106,3 +106,82 @@ def user_home(request):
         products.append(product)
     data['products']=products    
     return render(request,"user_home.html",data)
+
+
+
+def products(request):
+    data=dict()
+    cursor,mydb=database()
+    try:
+       pcode=request.GET.get('pcode')
+       print(pcode)
+       c="select * from products where Product_Code='{}'".format(pcode)
+       cursor.execute(c)
+       result=cursor.fetchall()
+       image_bytes = base64.b64decode(result[0][8])
+       image = Image.open(io.BytesIO(image_bytes))
+            
+        # Resize the image to 300x300
+       resized_image = image.resize((334, 300))
+       resized_image_bytes = io.BytesIO()
+       resized_image.save(resized_image_bytes, format='PNG')
+       data['pcode']=result[0][0]
+       data['pname']=result[0][1]
+       data['unit']=result[0][2]
+       data['price']=result[0][4]
+       data['size']=result[0][6]
+       data['image']=base64.b64encode(resized_image_bytes.getvalue()).decode('utf-8') 
+       data['quality']=result[0][9]
+       data['purity']=result[0][10]
+       data['premium']=result[0][11]
+       data['healthy']=result[0][12]
+       data['purity_level']=result[0][13]
+       data['experience']=result[0][14]
+       data['safety']=result[0][15]
+       data['packaging']=result[0][16]
+       data['real_taste']=result[0][17]
+       data['discount']=result[0][18]
+       data['quality_head']=result[0][19]
+       data['purity_head']=result[0][20]
+       data['premium_head']=result[0][21]
+       data['heading_1']=result[0][23]
+       data['heading_2']=result[0][24]
+       data['discount_price']=int(data['price'])-int(data['price'])*int(data['discount'])/100
+
+       c="select * from product_variant where Product_Code='{}'".format(pcode)
+       cursor.execute(c)
+       result=cursor.fetchall()
+       variant=[]
+       var={
+               'size': data['size'],
+               'price': data['price']-int(data['price'])*int(data['discount'])/100
+           }
+       variant.append(var)
+       for x in result:
+           var={
+               'size': x[1],
+               'price': x[2]-int(x[2])*int(data['discount'])/100
+           }
+           variant.append(var)
+       data['variant']=variant   
+       c="select * from product_image where Product_ID='{}'".format(pcode)
+       cursor.execute(c)
+       result=cursor.fetchall()
+       images=[]
+       for x in result:
+            image_bytes = base64.b64decode(x[1])
+            image = Image.open(io.BytesIO(image_bytes))
+                    
+            # Resize the image to 300x300
+            resized_image = image.resize((334, 300))
+            resized_image_bytes = io.BytesIO()
+            resized_image.save(resized_image_bytes, format='PNG')
+            image={
+                'image': base64.b64encode(resized_image_bytes.getvalue()).decode('utf-8')
+            }
+            images.append(image)
+       data['images']=images  
+    except:
+       1     
+    
+    return render(request,"products.html",data)
