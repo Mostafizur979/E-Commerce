@@ -1,0 +1,375 @@
+{% load static %}<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compitable" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial scale=1.0">
+        <meta name="description" content="track">
+        <meta name="keywords" content="greentech">
+        <meta name="author" content="Kawser Rahman">
+
+        <title>Premium Foods - terms and Conditions</title>
+        <script type="text/javascript" src="{% static 'menu3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'menu2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'sale.js' %}"></script>
+        <script type="text/javascript" src="{% static 'sales_delete.js' %}"></script>
+        <script type="text/javascript" src="{% static 'profile.js' %}"></script>
+        <script type="text/javascript" src="{% static 'search_by_date.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <style>
+            *{
+                margin: 0;
+            }
+            .upper-menu{
+                position: sticky;
+                height: 70px;
+                width: 100%;
+                background-color: #FE9F43;
+                z-index: 200;
+                margin: 0px;
+            }
+            .menu{
+                color: white;
+                float: right;
+                width: 80px;
+                font-size: 25px;
+                margin: 20px;
+              
+            }
+            a:hover{
+                color: #cccc;
+            }
+            .search{
+                float: left;
+            }
+            .search-style{
+                margin: 20px;
+                width: 290px;
+                height: 30px;
+            }
+            .btn-style{
+                margin: 23px;
+                margin-left: -60px;
+                width: 30px;
+                height: 30px;
+                border: none;
+                background-color: white;
+            }
+            #search-image{
+                height: 25px;
+                width: 25px;
+            }
+            .search-body{
+                width: 320px;
+                display: flex;
+            }
+            .logo{
+                margin: 5px;
+                float: left;
+            }
+            .container{
+                width: 90%;
+                margin: 0 auto;
+                margin-top: 20px;
+
+              
+            }
+            .about-company-head{
+                font-size: 23px;
+                text-align: center;
+                width: 100%;
+                padding: 10px;
+               
+            }
+            .about-company{
+              width: 95%;
+              border: 3px solid black;
+              padding: 30px;
+              border-radius: 10px;
+              font-size: 17px;
+              font-family: arial;
+            }
+
+              body{
+                background-color: #F5F5F5;
+              }
+              
+              *{
+                font-family: arial;
+              }
+ 
+            .footer{
+                width: 100%;
+                height: 200px;
+                margin-top: 20px;
+                background-color: #045F1F;
+                text-align: center;
+                color: yellow;
+                 
+            }
+            
+            .footer-sub{
+                width: 350px;
+                float: left;
+                margin: 30px;
+                line-height: 1.6;
+            }
+            .footer-sub a{
+                color: yellow;
+                text-decoration: none;
+            }
+            .footer-sub a:hover{
+                color: white;
+            }
+            @media screen and (min-width: 100px) and (max-width: 799px){
+                .logo{
+                    width: 260px;
+                    margin-left: -15px;
+                }
+                .search-body{
+                    width: 140px;
+                }
+                .search-style{
+                    width: 140px;
+                }
+        
+                .container{
+                    width: 90%;
+                    
+                }
+      
+                .about-company{
+                    width: 85%;
+                }
+                .about-company-head{
+                    width: 100%;
+                }
+
+      
+                .footer{
+                    height: 500px;
+                }
+                .footer-sub{
+                    margin-left: 60px;
+                }
+          
+           
+
+            }
+            .hide-menu{
+                height: 40px;
+                width: 40px;
+                float: left;
+                margin-top: 13px;
+
+            }
+            .rect-logo{
+                width: 200px;
+                height: 60px;
+                margin-left: -10px;
+            }
+            .circ-logo{
+                width: 60px;
+                height: 60px;
+            }
+            .pretag{
+                width: 100%;
+            }
+              
+        </style>
+    </head>
+    <body>
+        <div class="upper-menu">
+            
+            <div class="logo">
+                <a href="{% url 'user_home' %}">
+                    <img  class="circ-logo" src="{% static 'premium-circle.png' %}">
+                    <img  class="rect-logo" src="{% static 'premium-rect.png' %}">
+                </a>
+            </div>
+            <div class="search">
+                <form >
+                    <div class="search-body">
+                    <div><input type="text" class="search-style"></input></div>
+                    <div><button type="submit" class="btn-style"> <img id="search-image" src="{% static 'search.png' %}"></button></div></div>
+                </form>
+            </div> 
+        </div>
+       
+    <div class="container">
+    <div class="about-company-head"><h2>TERMS & CONDITIONS</h2></div>
+    <div class="about-company">
+
+    <pre class="pretag">
+Terms and Conditions
+Welcome to PREMIUM FOODS!
+
+These terms and conditions outline the rules and regulations for the use of premium food‘s Website, located at https://1.greentechagronursery.com/.
+By accessing this website we assume you accept these terms and conditions. Do not continue to use premium foods if you do not agree to take
+all of the terms and conditions stated on this page.
+
+The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: “Client”, “You”
+and “Your” refers to you, the person log on this website and compliant to the Company’s terms and conditions. “The Company”, “Ourselves”,
+“We”, “Our” and “Us”, refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves. All terms refer to the offer,
+acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for
+the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to,
+prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are
+taken as interchangeable and therefore as referring to same.
+
+Payment policy
+premium foods offers 100% advance with also payment on delivery (POD) apply payment on any purchase, which means you have to pay full
+payment within 72 hours after placing an order. Else, the order will be removed automatically (condtions apply).
+Currently we receive payment throuhing mobile banking at bKash, Nagod, Rocket and Bank transfer. After completing payment we will send you
+an updated invoice soft copy via mail &amp; Call. Remember, while processing your payment put the order number as reference id.
+
+Shipping Policy
+Premium foods takes time to deliver outside Dhaka 03-05 days. premium foods uses its own resources or third parties to complete the delivery.
+Delivery cost varies on product weight, packaging and type. Greentech Agro reserves the right to change delivery costs at any time. If any of our
+customers didn’t receive their product in time, then our team will review the orders. After reviewing the order process we will refund you within
+15 days.
+
+Privacy Policy
+Premium Foods is committed to keep customers personal information in safe hand. We believe in customer satisfaction as well as our
+merchant.
+
+Product Return Policy
+Currently, no instant product return policy available on our platform. Premium Foods believes in 100% perfection and quality. Premium
+Foods has a QC team to check the product’s quality. Before receiving products please make sure you check the products and then give a
+sign to the invoice paper. After receiving products no complaints will be accepted.
+After purchasing from www.premiumfoods.xyz you can enjoy our after sales service up to 10 days. Our professional expertise and
+agriculturists are there to help you by giving organic products consultancy. Also, If any products got damaged by naturally within 15 days,
+you can claim a replacement.
+
+Cookies
+We employ the use of cookies. By accessing Premium Foods, you agreed to use cookies in agreement with the Premium Foods Privacy
+Policy.
+
+Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the
+functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use
+cookies.
+License
+Unless otherwise stated, Premium Foods and/or its licensors own the intellectual property rights for all material on Premium Foods. All
+intellectual property rights are reserved. You may access this from Premium Foods for your own personal use subjected to restrictions set
+in these terms and conditions.
+You must not:
+ Republish material from Premium Foods
+ Sell, rent or sub-license material from Premium Foods
+ Reproduce, duplicate or copy material from Premium Foods
+ Redistribute content from Premium Foods
+This Agreement shall begin on the date hereof.
+Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Premium
+Foods does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and
+opinions of Premium Foods,its agents and/or affiliates. Comments reflect the views and opinions of the person who posts their views and
+opinions. To the extent permitted by applicable laws, Premium Foods will not be liable for the Comments or for any liability, damages or
+expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.
+Premium Foods reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate,
+offensive or causes breach of these Terms and Conditions.
+You warrant and represent that:
+ You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;
+ The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party;
+ The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy
+ Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.
+
+You hereby grant Premium Foods a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of
+your Comments in any and all forms, formats or media.
+
+Hyperlinking to our Content
+The following organizations may link to our Website without prior written approval:
+ Government agencies;
+ Search engines;
+ News organizations;
+ Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses;
+and
+ System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups
+which may not hyperlink to our Web site.
+These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way
+deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits
+within the context of the linking party’s site.
+We may consider and approve other link requests from the following types of organizations:
+ commonly-known consumer and/or business information sources;
+ dot.com community sites;
+ associations or other groups representing charities;
+ online directory distributors;
+ internet portals;
+ accounting, law and consulting firms; and
+ educational institutions and trade associations.
+We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to
+our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the
+hyperlink compensates the absence of Premium Foods and (d) the link is in the context of general resource information.
+
+These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship,
+endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party’s site.
+If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending
+an e-mail to Premium Foods. Please include your name, your organization name, contact information as well as the URL of your site, a list
+of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks
+for a response.
+Approved organizations may hyperlink to our Website as follows:
+ By use of our corporate name; or
+ By use of the uniform resource locator being linked to; or
+ By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking
+party’s site.
+No use of Premium Foods logo or other artwork will be allowed for linking absent a trademark license agreement.
+
+iFrames
+Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual
+presentation or appearance of our Website.
+Content Liability
+We will not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that
+are rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which
+infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.
+
+Reservation of Rights
+
+We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links
+to our Website upon request. We also reserve the right to amend these terms and conditions and it’s linking policy at any time. By
+continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.
+
+Removal of links from our website
+If you find any link on our Website that is offensive for any reason, you are free to contact and inform us at any moment. We will consider
+requests to remove links but we are not obligated to or so or to respond to you directly.
+We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to
+ensure that the website remains available or that the material on the website is kept up to date.
+
+Disclaimer
+To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and
+the use of this website. Nothing in this disclaimer will:
+ Limit or exclude our or your liability for fraud or fraudulent misrepresentation.
+ Limit any of our or your liabilities in any way that is not permitted under applicable law.
+ Exclude any of our or your liabilities that may not be excluded under applicable law.
+The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph;
+and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.
+As long as, the website and the information and services on the website are provided free of charge. We will not be liable for any loss or
+damage of any nature.
+
+
+ </pre>
+        
+    </div>
+    </div>
+    <div class="footer">
+         
+        <div class="footer-sub">
+            <img  class="circ-logo" src="{% static 'premium-circle.png' %}">
+         <p style="font-family: arial; font-size: 13px; color: yellow;">Premium Foods is one of the largest among the Agro 
+             Food Manufacturer and Supplier according to the Customers Demand</p>
+        </div>
+        <div class="footer-sub">
+         <h3>CONTACT INFO:</h3>
+         <p style="font-family: arial; font-size: 15px;">Baneshwar bazar (Infront of Pubali Bank)
+              Puthia, Rajshahi</p>
+        </div>
+        <div class="footer-sub">
+         <h3>MORE INFO:</h3>
+         <a href="{% url 'about_company' %}" target="blank">About Company</a><br>
+         <a href="{% url 'terms_condition' %}" target="blank">Terms and Conditions</a><br>
+         <a href="{% url 'contact_us' %}" target="blank">Contact Us</a>
+        </div>
+
+
+    </div>
+ 
+
+
+
+    </body>
+</html>    

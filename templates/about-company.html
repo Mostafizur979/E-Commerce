@@ -1,0 +1,233 @@
+{% load static %}<!Doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compitable" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial scale=1.0">
+        <meta name="description" content="track">
+        <meta name="keywords" content="greentech">
+        <meta name="author" content="Kawser Rahman">
+
+        <title>Premium Foods - About Company</title>
+        <script type="text/javascript" src="{% static 'menu3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'menu2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'sale.js' %}"></script>
+        <script type="text/javascript" src="{% static 'sales_delete.js' %}"></script>
+        <script type="text/javascript" src="{% static 'profile.js' %}"></script>
+        <script type="text/javascript" src="{% static 'search_by_date.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <style>
+            *{
+                margin: 0;
+            }
+            .upper-menu{
+                position: sticky;
+                height: 70px;
+                width: 100%;
+                background-color: #FE9F43;
+                z-index: 200;
+                margin: 0px;
+            }
+            .menu{
+                color: white;
+                float: right;
+                width: 80px;
+                font-size: 25px;
+                margin: 20px;
+              
+            }
+            a:hover{
+                color: #cccc;
+            }
+            .search{
+                float: left;
+            }
+            .search-style{
+                margin: 20px;
+                width: 290px;
+                height: 30px;
+            }
+            .btn-style{
+                margin: 23px;
+                margin-left: -60px;
+                width: 30px;
+                height: 30px;
+                border: none;
+                background-color: white;
+            }
+            #search-image{
+                height: 25px;
+                width: 25px;
+            }
+            .search-body{
+                width: 320px;
+                display: flex;
+            }
+            .logo{
+                margin: 5px;
+                float: left;
+            }
+            .container{
+                width: 90%;
+                margin: 0 auto;
+                margin-top: 20px;
+
+              
+            }
+            .about-company-head{
+                font-size: 23px;
+                text-align: center;
+                width: 100%;
+                padding: 10px;
+               
+            }
+            .about-company{
+              width: 95%;
+              border: 3px solid black;
+              padding: 30px;
+              border-radius: 10px;
+              font-size: 17px;
+              font-family: arial;
+            }
+
+              body{
+                background-color: #F5F5F5;
+              }
+              
+              *{
+                font-family: arial;
+              }
+ 
+            .footer{
+                width: 100%;
+                height: 200px;
+                margin-top: 20px;
+                background-color: #045F1F;
+                text-align: center;
+                color: yellow;
+                 
+            }
+            
+            .footer-sub{
+                width: 350px;
+                float: left;
+                margin: 30px;
+                line-height: 1.6;
+            }
+            .footer-sub a{
+                color: yellow;
+                text-decoration: none;
+            }
+            .footer-sub a:hover{
+                color: white;
+            }
+            @media screen and (min-width: 100px) and (max-width: 799px){
+                .logo{
+                    width: 260px;
+                    margin-left: -15px;
+                }
+                .search-body{
+                    width: 140px;
+                }
+                .search-style{
+                    width: 140px;
+                }
+        
+                .container{
+                    width: 90%;
+                    
+                }
+      
+                .about-company{
+                    width: 85%;
+                }
+                .about-company-head{
+                    width: 100%;
+                }
+
+      
+                .footer{
+                    height: 500px;
+                }
+                .footer-sub{
+                    margin-left: 60px;
+                }
+          
+           
+
+            }
+            .hide-menu{
+                height: 40px;
+                width: 40px;
+                float: left;
+                margin-top: 13px;
+
+            }
+            .rect-logo{
+                width: 200px;
+                height: 60px;
+                margin-left: -10px;
+            }
+            .circ-logo{
+                width: 60px;
+                height: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="upper-menu">
+            
+            <div class="logo">
+                <a href="{% url 'user_home' %}">
+                    <img  class="circ-logo" src="{% static 'premium-circle.png' %}">
+                    <img  class="rect-logo" src="{% static 'premium-rect.png' %}">
+                </a>
+            </div>
+            <div class="search">
+                <form >
+                    <div class="search-body">
+                    <div><input type="text" class="search-style"></input></div>
+                    <div><button type="submit" class="btn-style"> <img id="search-image" src="{% static 'search.png' %}"></button></div></div>
+                </form>
+            </div> 
+        </div>
+       
+    <div class="container">
+    <div class="about-company-head"><h2>ABOUT COMPANY</h2></div>
+    <div class="about-company">
+        Premium Foods a premier full stack organic grocery center in Baneshwar, 
+        Rajshahi, Bangladesh and has evolved into a specially retailer with a prestigious 
+        reputation in the market with many local customer​, which is a largest online-based retail 
+        and wholesale Organic food shop & manufacturing company in Bangladesh according
+         to the customers demand. PREMIUM FOODS digitalized the Organic Foods suppliers
+          into one platform. Where buyers, merchants, and suppliers get connected to each other.
+          ​ Our expectation that the products will be helpful for filling consumer’s organic food demand
+           and also will confirm branding quality. We are trying our best.
+    </div>
+    </div>
+    <div class="footer">
+         
+        <div class="footer-sub">
+            <img  class="circ-logo" src="{% static 'premium-circle.png' %}">
+         <p style="font-family: arial; font-size: 13px; color: yellow;">Premium Foods is one of the largest among the Agro 
+             Food Manufacturer and Supplier according to the Customers Demand</p>
+        </div>
+        <div class="footer-sub">
+         <h3>CONTACT INFO:</h3>
+         <p style="font-family: arial; font-size: 15px;">Baneshwar bazar (Infront of Pubali Bank)
+              Puthia, Rajshahi</p>
+        </div>
+        <div class="footer-sub">
+         <h3>MORE INFO:</h3>
+         <a href="{% url 'about_company' %}" target="blank">About Company</a><br>
+         <a href="{% url 'terms_condition' %}" target="blank">Terms and Conditions</a><br>
+         <a href="{% url 'contact_us' %}" target="blank">Contact Us</a>
+        </div>
+
+
+       </div>
+ 
+
+
+    </body>
+</html>    
